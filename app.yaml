@@ -1,6 +1,6 @@
 runtime: php74
 instance_class: F1
-api_varsion: 1
+api_version: 1
 
 automatic_scaling:
   min_idle_instances: automatic
