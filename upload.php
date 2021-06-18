@@ -1,59 +1,59 @@
 <?php 
 include("includes/header.php");
-require_once "vendor/autoload.php";
+// require_once "vendor/autoload.php";
 
-use Aws\S3\S3Client;
+// use Aws\S3\S3Client;
 
-$profile_id = $user['username'];
-$imgSrc = "";
-$result_path = "";
-$msg = "";
+// $profile_id = $user['username'];
+// $imgSrc = "";
+// $result_path = "";
+// $msg = "";
 
-//S3使用準備
-$bucket = '--- BUCKET_NAME ---';
-$key = '--- KEY_NAME ---';
-$secret = '--- SECRET_NAME ---';
-
-
-//S3インスタンス作成
-s3 = new S3Client(array(
-    'version' => 'latest',
-    'credentials' => array(
-        'key' => $key,
-        'secret' => $secret,
-    ),
-    'region'  => 'ap-northeast-3', // 大阪地域設定
-));
-
-/***********************************************************
-	0 - tmpの画像があれば削除
-***********************************************************/
-	if (!isset($_POST['x']) && !isset($_FILES['image']['name']) ){
-		//Delete users temp image
-			$temppath = 'assets/images/profile_pics/'.$profile_id.'_temp.jpeg';
-			if (file_exists ($temppath)){ @unlink($temppath); }
-	} 
+// //S3使用準備
+// $bucket = '--- BUCKET_NAME ---';
+// $key = '--- KEY_NAME ---';
+// $secret = '--- SECRET_NAME ---';
 
 
-if(isset($_FILES['image']['name'])){	
-/***********************************************************
-	1 - S3(AWS)へアップロード
-***********************************************************/	
-// アップロードされた画像の処理
-$file = $_FILES['image']['tmp_name'];
-if (!is_uploaded_file($file)) {
-    return;
-}
+// //S3インスタンス作成
+// s3 = new S3Client(array(
+//     'version' => 'latest',
+//     'credentials' => array(
+//         'key' => $key,
+//         'secret' => $secret,
+//     ),
+//     'region'  => 'ap-northeast-3', // 大阪地域設定
+// ));
 
-// S3バケットに画像をアップロード
-$result = $s3->putObject(array(
-    'Bucket' => $bucket,
-    'Key' => time() . '.jpg',
-    'Body' => fopen($file, 'rb'),
-    'ACL' => 'public-read', // 画像は一般公開されます
-    'ContentType' => mime_content_type($file),
-));
-}
+// /***********************************************************
+// 	0 - tmpの画像があれば削除
+// ***********************************************************/
+// 	if (!isset($_POST['x']) && !isset($_FILES['image']['name']) ){
+// 		//Delete users temp image
+// 			$temppath = 'assets/images/profile_pics/'.$profile_id.'_temp.jpeg';
+// 			if (file_exists ($temppath)){ @unlink($temppath); }
+// 	} 
+
+
+// if(isset($_FILES['image']['name'])){	
+// /***********************************************************
+// 	1 - S3(AWS)へアップロード
+// ***********************************************************/	
+// // アップロードされた画像の処理
+// $file = $_FILES['image']['tmp_name'];
+// if (!is_uploaded_file($file)) {
+//     return;
+// }
+
+// // S3バケットに画像をアップロード
+// $result = $s3->putObject(array(
+//     'Bucket' => $bucket,
+//     'Key' => time() . '.jpg',
+//     'Body' => fopen($file, 'rb'),
+//     'ACL' => 'public-read', // 画像は一般公開されます
+//     'ContentType' => mime_content_type($file),
+// ));
+// }
 ?>
 
 
