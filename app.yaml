@@ -10,7 +10,7 @@ automatic_scaling:
 
 handlers:
   - url: /
-    script: register.php
+    script: auto
     login: required
 
 
