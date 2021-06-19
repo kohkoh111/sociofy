@@ -29,7 +29,7 @@ if(isset($_FILES['image']['name'])){
 		$type = $ImageType[1]; //file type	
 	//Set Upload directory    
 		$uploaddir = $_SERVER['DOCUMENT_ROOT'].'/assets/images/profile_pics';
-		echo $uploaddir;
+		//echo $uploaddir; アップロードパス確認用
 
 	//Set File name	
 		$file_temp_name = $profile_id.'_original.'.md5(time()).'n'.$type; //the temp file name
