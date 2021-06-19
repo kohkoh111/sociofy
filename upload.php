@@ -28,7 +28,7 @@ if(isset($_FILES['image']['name'])){
 		$ImageType = @explode('/', $_FILES['image']['type']);
 		$type = $ImageType[1]; //file type	
 	//Set Upload directory    
-		$uploaddir = $_SERVER['DOCUMENT_ROOT'].'/sociofy/assets/images/profile_pics';
+		$uploaddir = $_SERVER['DOCUMENT_ROOT'].'/assets/images/profile_pics';
 		echo $uploaddir;
 
 	//Set File name	
