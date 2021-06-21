@@ -143,6 +143,19 @@ nav a:hover {
 	color: #fff;
 }
 
+.themeSwitchToggle{
+	right: 200px;
+}
+
+.DispMessage{
+	margin: 5px;
+}
+
+#DispMessage{
+	color: #fff;
+}
+
+
 .wrapper {
 	margin: 0 auto;
 	top: 50px;
