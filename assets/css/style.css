@@ -82,9 +82,8 @@ a:hover {
 
 .switch {
   width: 55px;
-  display: flex;
-  align-items: center;
   justify-content: space-between;
+  margin: 17px 0 0 ;
 }
 
 .switch div {
@@ -145,14 +144,16 @@ nav a:hover {
 
 .themeSwitchToggle{
 	right: 200px;
+	top: -3px;
 }
 
 .DispMessage{
-	margin: 5px;
+	margin: -1px -1px 3px 0;
 }
 
 #DispMessage{
 	color: #fff;
+	font-size: 15px;
 }
 
 
