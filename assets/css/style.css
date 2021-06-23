@@ -180,6 +180,7 @@ nav a:hover {
 	width: 250px;
 	float: left;
 	margin-bottom: 20px;
+	position: fixed;
 }
 
 .user_details img {
