@@ -33,9 +33,9 @@ if(isset($_POST['post_message'])){
 
     $message_obj->sendMessage($username, $body, $date);
 
-    //投稿の二重登録を禁止する
-    // $url = (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-    // header("Location: $url");
+    // 投稿の二重登録を禁止する
+    $url = (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    header("Location: $url");
 
   }
   //メッセージを送った後に、同じメッセージ画面を読み込むJS
@@ -193,6 +193,7 @@ if(isset($_POST['post_message'])){
 $(function(){
 
 	var userLoggedIn = '<?php echo $userLoggedIn; ?>';
+  var profileUsername = '<?php echo $username; ?>'
 	var inProgress = false;
 
 	loadPosts(); //Load first posts
@@ -218,9 +219,9 @@ $(function(){
 		var page = $('.posts_area').find('.nextPage').val() || 1; //If .nextPage couldn't be found, it must not be on the page yet (it must be the first time loading posts), so use the value '1'
 
 		$.ajax({
-			url: "includes/handlers/ajax_load_posts.php",
+			url: "includes/handlers/ajax_load_profile_posts.php",
 			type: "POST",
-			data: "page=" + page + "&userLoggedIn=" + userLoggedIn,
+			data: "page=" + page + "&userLoggedIn=" + userLoggedIn + "&profileUsername=" +profileUsername,
 			cache:false,
 
 			success: function(response) {
