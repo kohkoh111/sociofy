@@ -27,7 +27,7 @@ class Post {
 				}
 			}
 			$body = implode(" ", $body_array);
-			Location("index.php");
+			header('Location:index.php');
 
 
 			//現時刻取得
