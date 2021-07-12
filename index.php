@@ -3,11 +3,51 @@ include("includes/header.php");
 
 
 if(isset($_POST['post'])){
-	$post = new Post($con, $userLoggedIn);
-	$post->submitPost($_POST['post_text'], 'none');
-}
 
- ?>
+//画像アップロード処理
+	$uploadOk = 1;
+	$imageName = $_FILES['fileToUpload']['name'];
+	$errorMessage = "";
+
+	if($imageName != "") {
+		$targetDir = "assets/images/posts/";
+		$imageName = $targetDir . uniqid() . basename($imageName);
+		$imageFileType = pathinfo($imageName, PATHINFO_EXTENSION);
+
+		if($_FILES['fileToUpload']['size'] > 10000000) {
+			$errorMessage = "Sorry your file is too large";
+			$uploadOk = 0;
+		}
+
+		if(strtolower($imageFileType) != "jpeg" && strtolower($imageFileType) != "png" && strtolower($imageFileType) != "jpg") {
+			$errorMessage = "Sorry, only jpeg, jpg and png files are allowed";
+			$uploadOk = 0;
+		}
+
+		if($uploadOk) {
+			
+			if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $imageName)) {
+				//アップロード成功
+			}
+			else {
+				//アップロード失敗
+				$uploadOk = 0;
+			}
+		}
+
+	}
+
+	if($uploadOk) {
+		$post = new Post($con, $userLoggedIn);
+		$post->submitPost($_POST['post_text'], 'none', $imageName);
+	}
+	else {
+		echo "<div style='text-align:center;' class='alert alert-danger'>
+				$errorMessage
+			</div>";
+	}
+}
+?>
 
 	<div class="user_details column">
 		<a href="<?php echo $userLoggedIn; ?>">  <img src="<?php echo $user['profile_pic']; ?>"> </a>
@@ -30,7 +70,8 @@ if(isset($_POST['post'])){
 	</div>
 
 	<div class="main_column column">
-		<form class="post_form" action="index.php" method="POST">
+		<form class="post_form" action="index.php" method="POST" enctype="multipart/form-data">
+			<input type="file" name="fileToUpload">
 			<textarea name="post_text" id="post_text" placeholder="Got something to say?"></textarea>
 			<input type="submit" name="post" id="post_button" value="Post">
 			<hr>
