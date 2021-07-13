@@ -169,7 +169,7 @@ class Message {
 
 	}
 
-	public function getConvosDropdown($data, $limit) {
+	public function getConversationsDropdown($data, $limit) {
 
 		$page = $data['page'];
 		$userLoggedIn = $this->user_obj->getUsername();
