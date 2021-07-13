@@ -39,10 +39,10 @@ if(isset($_POST['post_message'])){
 <!-- div user_details columnクラスの終了タグ -->
 </div>
 
-<div class="main_column column">
+<div class="main_column column" id="main_column">
   <?php
   if($user_to != 'new'){
-    echo "<h4><a href='$user_to'>". $user_to_obj->getFirstAndLastName(). "</a></h4><hr><br>";
+    echo "<h4>You and <a href='$user_to'>" . $user_to_obj->getFirstAndLastName() . "</a></h4><hr><br>";
     echo "<div class='loaded_messages' id='scroll_message'>";
     echo $message_obj->getMessages($user_to);
     echo "</div>";
@@ -85,7 +85,7 @@ div.scrollTop = div.scrollHeight;
     <?= $message_obj->getConversations(); ?>
   </div>
   <br>
-  <a href="messages.php?u=new">New messages</a>
+<!--   <a href="messages.php?u=new">New messages</a> -->
 
 <!-- div=user_details column id=conversationクラスの終了タグ -->
 </div>
