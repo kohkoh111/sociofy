@@ -1,20 +1,20 @@
-Sociofyアプリケーション
+Sociofy
+(簡易SNSサイト)
 
 
 ・使用技術
 	
 言語: php javascript(jQuery Ajax) 
 	
-フレームワーク: Bootstrap(CSS)
+フレームワーク: Bootstrap
 	
 DB: MySQL
 	
 環境: MAMP
 
-デプロイ方法　Heroku
+デプロイ方法: Cloudways
 
-URL: https://k-sociofy.herokuapp.com/register.php
-(閉鎖中※改修のため
+URL: http://phpstack-616046-1998442.cloudwaysapps.com/
 
 ・概要
 
@@ -29,11 +29,13 @@ URL: https://k-sociofy.herokuapp.com/register.php
 
 ・実装機能一蘭
 
+会員登録
+
 ログイン・ログアウト(セッション保持、破棄)
 
 投稿をする
 
-友達追加機能
+友達追加機能(友達申請・承認)
 
 いいね機能
 
@@ -41,14 +43,9 @@ URL: https://k-sociofy.herokuapp.com/register.php
 
 プロフィール画面表示
 
-画像のアップロード処理
+プロフィール画像の更新・トリミング機能
 
-チャット機能
-
-・将来へ向けて
-
-
-セキュリティ対策
+チャット機能(1対1のチャットルーム)
 
 
 
