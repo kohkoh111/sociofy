@@ -16,6 +16,7 @@ DB: MySQL
 
 URL: http://phpstack-616046-1998442.cloudwaysapps.com/
 (閉鎖中)
+
 ・概要
 
 オリジナルSNSサイトです。
